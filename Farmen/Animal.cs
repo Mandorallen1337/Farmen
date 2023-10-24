@@ -8,20 +8,40 @@ namespace Farmen
 {
     public class Animal : Entity
     {
+
+
+        public string Species { get; set; } = "";
+        private List<string> AcceptebleCropTypes { get; set; }
         
-
-        public string Species {  get; set; }
-        //private List<string> AcceptebleCropTypes { get; set; }
-
-        public Animal(string name, int id, string species/*, string accepetebleCropTypes */) : base(name, id)
-        {
-            species = Species;
-            //this.AcceptebleCropTypes = accepetebleCropTypes;
-
-        }
-        public  override void GetDescription(string name, int id)
+        
+        
+        public Animal(string name, int id, string species ) : base(name, id)
         {
             
+            this.Species = species;
+            
+
         }
+
+        public void Feed()
+        {
+            
+            Console.WriteLine("What crop do you want to feed with?");
+            foreach( var item in AcceptebleCropTypes)
+            {
+                Console.WriteLine(item);
+            }
+            
+        }
+       
+
+        public override string GetDescription()
+        {
+            return $"This is a {Species}";
+        }
+        
+
+
+
     }
 }

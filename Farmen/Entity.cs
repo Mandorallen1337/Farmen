@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace Farmen
 {
-    public class Entity
+    public abstract class Entity
     {
         
-        protected string Name { get; set; }
+        public string Name { get; set; }
         public int Id { get; set; }
+        //stod som protected men då kan vi inte använda name i animalManager?
 
         public Entity(string name, int id)
         {
             Name = name;
             Id = id;
         }
-        public abstract void GetDescription()
-        {
-            //Create funktion to return value.
-           
-            
-        }
+
+        public abstract string GetDescription();
+        
     }
 }
