@@ -31,9 +31,10 @@ namespace Farmen
         public override string GetDescription()
         {
             return $"This is croptype: {Name}.";
+            return $"Quantity is: {Quantity}";
         }
 
-        public static int AddCrop(int quantity)
+        public int AddCrop(int quantity)
         {
             Console.WriteLine("Enter the amount of weet to add:");
             string input = Console.ReadLine();

@@ -41,6 +41,12 @@ namespace Farmen
                     case "3":
                         ViewCrops();
                         break;
+                    case "4":
+                        GetCrops();
+                        break;
+                        case "5":
+
+                            break;
                     case "9":
                         showMenu = false;
                         break;
@@ -55,12 +61,15 @@ namespace Farmen
                 Console.WriteLine("1. Add crop.");
                 Console.WriteLine("2. Remove crop.");
                 Console.WriteLine("3. View crops.");
+                Console.WriteLine("4. Get crops.");
+
                 Console.WriteLine("9. Quit");
                 Console.Write("Enter your choice: ");
             }
         }
         private void ViewCrops()
         {
+            //använd GetDes.
             foreach(Crop crop in cropList)
             {
                 Console.WriteLine(" Type: " + crop.Name + "." + " Quantity: " + crop.Quantity + ". ");
@@ -72,14 +81,14 @@ namespace Farmen
         private void AddCrop()
         {
 
-
+            //Add crop/quantity
 
 
 
         }
         private void RemoveCrop()
         {
-
+            //Remove crop/Quantity
         }
         public Crop[] GetCrops()
         {

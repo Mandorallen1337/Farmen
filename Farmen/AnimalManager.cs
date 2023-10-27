@@ -78,12 +78,12 @@ namespace Farmen
 
         private void FeedAnimals()
         {
-            
+            //skicka med crop. Vilket djur och om det är rätt crop.
         }
 
         private void ViewAnimals()
         {
-            
+            //Använda GetDescriptions.
             foreach (Animal animals in animalList)
             {
                 Console.WriteLine(animals.Name + " " + animals.Id + " " + animals.Species + ". ");
@@ -94,6 +94,7 @@ namespace Farmen
 
         private void RemoveAnimal()
         {
+            //getdes.
             Console.WriteLine("Enter the id of the animals id to remove it.");
             foreach (var animal in animalList)
             {
