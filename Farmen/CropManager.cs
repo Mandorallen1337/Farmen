@@ -13,8 +13,8 @@ namespace Farmen
 
         public CropManager()
         {
-            cropList.Add(new Crop("Grass", 100));
-            
+            cropList.Add(new Crop("Grass", 100, 1));
+            cropList.Add(new Crop("Hay", 101, 2));
 
         }
             
@@ -79,14 +79,49 @@ namespace Farmen
         private void AddCrop()
         {
             //Add crop/quantity
+            bool addComplete = false;
+            while (!addComplete)
+            {
+                int amountToAdd;
+                if (int.TryParse(Console.ReadLine(), out amountToAdd))
+                {
+                    for (int i = 0; i < amountToAdd; i++)
+                    {
+                        Console.WriteLine("Enter a crop type: );
+                        string inputName = Console.ReadLine();
+                        Console.WriteLine("Enter Animal species: ");
+                        string inputSpecies = Console.ReadLine();
+                        addComplete = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input for the number of animals. Please enter a valid number.");
+                }
+            }
 
 
 
         }
         private void RemoveCrop()
         {
-            //Remove crop/Quantity
+            ViewCrops();
+            Console.WriteLine("Enter the ID of the crop you want to remove!");
+            int input = Convert.ToInt32(Console.ReadLine());
+
+            Crop cropToRemove = cropList.FirstOrDefault(crop => crop.CropID == input); //Johnnys magiska fingrar
+
+            if (cropToRemove != null)
+            {
+                cropList.Remove(cropToRemove);
+                Console.WriteLine($"Crop with ID {input} has been removed.");
+            }
+            else
+            {
+                Console.WriteLine("No crop found with ID " + input);
+            }
         }
+
         public Crop[] GetCrops()
         {
             Crop[] cropList = new Crop[0];

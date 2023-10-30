@@ -14,21 +14,19 @@ namespace Farmen
 
         public List<Animal> animalList = new List<Animal>();
 
-        Entity Entity { get; set; }
-
         public AnimalManager()
         {
-            
+
             animalList.Add(new Animal("Kajsa", 1, "Cow"));
             animalList.Add(new Animal("Lisa", 2, "Cow"));
             animalList.Add(new Animal("Maja", 3, "Cow"));
             animalList.Add(new Animal("Rosa", 4, "Cow"));
             animalList.Add(new Animal("Jenny", 5, "Cow"));
-            
+
 
         }
 
-        
+
 
         public AnimalManager(List<AnimalManager> cropList, List<Animal> animalList)
         {
@@ -56,7 +54,7 @@ namespace Farmen
                     case "3":
                         ViewAnimals();
                         break;
-                        case "4":
+                    case "4":
                         FeedAnimals();
                         break;
                     case "9":
@@ -88,7 +86,7 @@ namespace Farmen
             //Använda GetDescriptions.
             foreach (Animal animals in animalList)
             {
-                Console.WriteLine(animals.GetDescription()); //Funkar
+                Console.WriteLine(animals.GetDescription());
                 //Console.WriteLine(animals.Name + " " + animals.Id + " " + animals.Species + ". ");
 
             }
@@ -96,29 +94,24 @@ namespace Farmen
 
         private void RemoveAnimal()
         {
-            //getdes.
-            Console.WriteLine("Enter the id of the animals id to remove it.");
-            foreach (var animal in animalList)
+            ViewAnimals();
+            Console.WriteLine("Enter the ID of the animal you want to remove!");
+            int input = Convert.ToInt32(Console.ReadLine());
+
+            Animal animalToRemove = animalList.FirstOrDefault(animal => animal.Id == input); //Johnnys magiska fingrar
+
+            if (animalToRemove != null)
             {
-                Console.WriteLine(animal.Id);
-            }
-            int indexToRemove = int.Parse( Console.ReadLine());
-            if (indexToRemove >= 0 && indexToRemove < animalList.Count)
-            {
-                // Remove the item at the specified index.
-                animalList.RemoveAt(indexToRemove);
-                Console.WriteLine("Item removed.");
+                animalList.Remove(animalToRemove);
+                Console.WriteLine($"Animal with ID {input} has been removed.");
             }
             else
             {
-                Console.WriteLine("Invalid index. No item removed.");
+                Console.WriteLine("No animal found with ID " + input);
             }
-
-
-
         }
-        // Varför Bool?
-        private bool AddAnimals()
+
+        private void AddAnimals()
         {
             bool addComplete = false;
             Console.WriteLine("How many animals do you want to add?");
@@ -131,36 +124,23 @@ namespace Farmen
                     {
                         Console.WriteLine("Enter Animal name: ");
                         string inputName = Console.ReadLine();
-                        Console.WriteLine("Enter Animal ID: ");
-                        if (int.TryParse(Console.ReadLine(), out int inputId))
-                        {
-                            Console.WriteLine("Enter Animal species: ");
-                            string inputSpecies = Console.ReadLine();
-
-                            animalList.Add(new Animal(inputName, inputId, inputSpecies));
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid input for Animal ID. Please enter a valid number.");
-                            
-                        }
+                        Console.WriteLine("Enter Animal species: ");
+                        string inputSpecies = Console.ReadLine();
+                        addComplete = true;
                     }
-                    addComplete = true;
                 }
                 else
                 {
                     Console.WriteLine("Invalid input for the number of animals. Please enter a valid number.");
                 }
             }
-            return addComplete;
         }
-        
-
 
 
     }
+
+}
         
 
 
-    
-}
+

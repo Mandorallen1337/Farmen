@@ -8,21 +8,22 @@ namespace Farmen
 {
     public class Animal : Entity
     {
-
+        Crop Crop { get; set; } 
 
         public string Species { get; set; } = "";
         private List<string> AcceptebleCropTypes { get; set; }
-        
-        
-        
+
+        private static int nextAnimalID = 1;
+
         public Animal(string name, int id, string species ) : base(name, id)
         {
             
             this.Species = species;
+            nextAnimalID++;
 
         }
 
-        public void Feed()
+        public void Feed(List<string> AcceptableCropTypes)
         {
             
             Console.WriteLine("What crop do you want to feed with?");

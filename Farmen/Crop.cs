@@ -13,14 +13,17 @@ namespace Farmen
         public string CropType {  get; set; }
 
         public int Quantity { get; set; } 
+
+        public int CropID { get; set; }
         //va private?
 
+        private static int nextCropID = 1;
 
-
-        public Crop(string cropType, int quantity) : base(cropType, quantity)
+        public Crop(string cropType, int quantity, int cropID) : base(cropType, quantity)
         {
             CropType = cropType;
             Quantity = quantity;
+            CropID = cropID;
         }
 
 
@@ -30,7 +33,7 @@ namespace Farmen
 
         public override string GetDescription()
         {
-            return $"This is croptype: {Name} and the Quantity is: {Quantity}";
+            return $"This is croptype: {Name} and the Quantity is: {Quantity} and has number: {CropID}";
             //return $"Quantity is: {Quantity}";
         }
 
