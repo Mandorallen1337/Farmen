@@ -37,6 +37,7 @@ namespace Farmen
             //return $"Quantity is: {Quantity}";
         }
 
+
         public int AddCrop(int quantity)
         {
             Console.WriteLine("Enter the amount of weet to add:");
@@ -54,6 +55,9 @@ namespace Farmen
 
             return quantity;
         }
+
+
+
         public bool TakeCrop(int amoutToRemove)
         {
             Console.WriteLine("How much weet do you want to remove?");

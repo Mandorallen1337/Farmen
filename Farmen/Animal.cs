@@ -19,7 +19,7 @@ namespace Farmen
         {
             
             this.Species = species;
-            nextAnimalID++;
+            id = nextAnimalID++;
 
         }
 

@@ -24,6 +24,7 @@ namespace Farmen
             animalList.Add(new Animal("Jenny", 5, "Cow"));
 
 
+
         }
 
 
@@ -124,8 +125,18 @@ namespace Farmen
                     {
                         Console.WriteLine("Enter Animal name: ");
                         string inputName = Console.ReadLine();
+
+                        Console.WriteLine("Enter Animal ID: ");
+                        int inputId = int.Parse(Console.ReadLine());
+
                         Console.WriteLine("Enter Animal species: ");
                         string inputSpecies = Console.ReadLine();
+
+
+                        Animal newanimal = new Animal(inputName, inputId, inputSpecies);
+
+                        animalList.Add(newanimal);
+
                         addComplete = true;
                     }
                 }
@@ -135,10 +146,7 @@ namespace Farmen
                 }
             }
         }
-
-
     }
-
 }
         
 

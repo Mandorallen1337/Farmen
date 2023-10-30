@@ -9,7 +9,7 @@ namespace Farmen
 {
     internal class CropManager
     {
-        List<Crop> cropList = new List<Crop>();
+        public List<Crop> cropList = new List<Crop>();
 
         public CropManager()
         {
@@ -71,15 +71,15 @@ namespace Farmen
             foreach (Crop crop in cropList)
             {
                 Console.WriteLine(crop.GetDescription());
-            }
-            
-            
-            
+            }  
         }
+
+
+        
         private void AddCrop()
         {
-            //Add crop/quantity
             bool addComplete = false;
+            Console.WriteLine("How many crop do you want to add?");
             while (!addComplete)
             {
                 int amountToAdd;
@@ -87,10 +87,20 @@ namespace Farmen
                 {
                     for (int i = 0; i < amountToAdd; i++)
                     {
-                        Console.WriteLine("Enter a crop type: );
-                        string inputName = Console.ReadLine();
-                        Console.WriteLine("Enter Animal species: ");
-                        string inputSpecies = Console.ReadLine();
+                        Console.WriteLine("Enter crop type: ");
+                        string cropName = Console.ReadLine();
+
+                        Console.WriteLine("Enter crop quantity");
+                        int cropQuantity = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter crop ID: ");
+                        int CropID = int.Parse(Console.ReadLine());
+
+
+                        Crop newcrop = new Crop (cropName, cropQuantity, CropID);
+
+                        cropList.Add(newcrop);
+
                         addComplete = true;
                     }
                 }
@@ -99,10 +109,12 @@ namespace Farmen
                     Console.WriteLine("Invalid input for the number of animals. Please enter a valid number.");
                 }
             }
-
-
-
         }
+        
+
+
+
+
         private void RemoveCrop()
         {
             ViewCrops();
@@ -127,6 +139,5 @@ namespace Farmen
             Crop[] cropList = new Crop[0];
             return cropList;
         }
-
     }
 }
