@@ -14,6 +14,8 @@ namespace Farmen
 
         public List<Animal> animalList = new List<Animal>();
 
+        Entity Entity { get; set; }
+
         public AnimalManager()
         {
             
@@ -86,9 +88,9 @@ namespace Farmen
             //Använda GetDescriptions.
             foreach (Animal animals in animalList)
             {
-                Console.WriteLine(animals.Name + " " + animals.Id + " " + animals.Species + ". ");
-                
-                
+                Console.WriteLine(animals.GetDescription()); //Funkar
+                //Console.WriteLine(animals.Name + " " + animals.Id + " " + animals.Species + ". ");
+
             }
         }
 

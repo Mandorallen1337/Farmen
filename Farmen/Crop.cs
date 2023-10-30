@@ -30,8 +30,8 @@ namespace Farmen
 
         public override string GetDescription()
         {
-            return $"This is croptype: {Name}.";
-            return $"Quantity is: {Quantity}";
+            return $"This is croptype: {Name} and the Quantity is: {Quantity}";
+            //return $"Quantity is: {Quantity}";
         }
 
         public int AddCrop(int quantity)

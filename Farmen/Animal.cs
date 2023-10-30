@@ -19,7 +19,6 @@ namespace Farmen
         {
             
             this.Species = species;
-            
 
         }
 
@@ -37,7 +36,8 @@ namespace Farmen
 
         public override string GetDescription()
         {
-            return $"This is a {Species}";
+            return $"This is a {Species} with the name {Name} and ID for this is: {Id}";
+
         }
         
 

@@ -11,8 +11,6 @@ namespace Farmen
     {
         List<Crop> cropList = new List<Crop>();
 
-        
-
         public CropManager()
         {
             cropList.Add(new Crop("Grass", 100));
@@ -70,9 +68,9 @@ namespace Farmen
         private void ViewCrops()
         {
             //använd GetDes.
-            foreach(Crop crop in cropList)
+            foreach (Crop crop in cropList)
             {
-                Console.WriteLine(" Type: " + crop.Name + "." + " Quantity: " + crop.Quantity + ". ");
+                Console.WriteLine(crop.GetDescription());
             }
             
             
@@ -80,7 +78,6 @@ namespace Farmen
         }
         private void AddCrop()
         {
-
             //Add crop/quantity
 
 
