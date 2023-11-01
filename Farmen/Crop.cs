@@ -8,6 +8,8 @@ namespace Farmen
 {
     public class Crop : Entity
     {
+        CropManager CropManager {  get; set; }
+
         private string CropType {  get; set; }
 
         private int Quantity { get; set; } 
@@ -33,23 +35,13 @@ namespace Farmen
 
 
     
-        public int AddCrops(int quantity)
+        public int AddCrops(int uantity) //Om crop existerar och bara ska ha quantity
         {
-            Console.WriteLine("crop");
-            string input = Console.ReadLine();
-
             // Try to parse the input as an integer
-
-            if (int.TryParse(input, out int addedQuantity))
-            {
-                quantity += addedQuantity;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a valid numeric value.");
-            }
-
-            return quantity;
+            Console.WriteLine("Enter the amount you'd like to add: ");
+            int addQuantity = int.Parse(Console.ReadLine());
+            Quantity += addQuantity;
+            return Quantity;
         }
        
 

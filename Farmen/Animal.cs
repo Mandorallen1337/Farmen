@@ -9,6 +9,7 @@ namespace Farmen
     public class Animal : Entity
     {
         Crop Crop { get; set; } 
+        CropManager CropManager { get; set; }
 
         public string Species { get; set; } = "";
         private List<string> AcceptableCropTypes { get; set; }
@@ -26,7 +27,7 @@ namespace Farmen
 
 
 
-        public void Feed(List<string> AcceptableCropTypes)
+        public void Feed(List<string> AcceptableCropTypes) //Ha med cropList
         {
             Console.WriteLine("What crop do you want to Feed with?");
             foreach( var item in AcceptableCropTypes)

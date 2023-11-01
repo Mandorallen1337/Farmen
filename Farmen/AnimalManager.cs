@@ -25,7 +25,7 @@ namespace Farmen
         }
 
 
-        public AnimalManager(List<AnimalManager> cropList, List<Animal> animalList)
+        public AnimalManager(List<AnimalManager> cropList, List<Animal> animalList) //lista av crops
         {
             CropList = cropList;
             this.animalList = animalList;
@@ -82,8 +82,8 @@ namespace Farmen
         private void FeedAnimals()
         {
             //skicka med crop. Vilket djur och om det är rätt crop.
-
-            // Till Niklas:
+            //anledning för croplist/manager
+            // Till Niklas: 1. Vilken animal? 2. vilken crop ska animal ha?, 3. om acceptableCropTypes stämmer = namnamnam 4. 
             //Ska vi ha med detta i och med att vi inte gör alla klasser från diagrammet?
         }
 

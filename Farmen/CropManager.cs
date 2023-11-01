@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace Farmen
 
         public List<Crop> GetCropList() {  return cropList; }
             
+        Crop Crop { get; set; }
     
         public void CropmanagerMenu()
         {
@@ -45,11 +47,7 @@ namespace Farmen
                         break;
                     case "4":
                         Console.Clear();
-                        //GetCrops();
-                        break;
-                    case "5":
-                        Console.Clear();
-                        //RemoveCropQuantity();
+                        GetCrops();
                         break;
                     case "9":
                         Console.Clear();
@@ -67,7 +65,6 @@ namespace Farmen
                 Console.WriteLine("2. Remove crop.");
                 Console.WriteLine("3. View crops.");
                 Console.WriteLine("4. Get crops.");
-                Console.WriteLine("5. Remove crop quantity");
                 Console.WriteLine("9. Go back to main menu");
                 Console.Write("Enter your choice: ");
             }
@@ -83,12 +80,47 @@ namespace Farmen
 
 
         
-        private void AddCrop()
+        private void AddCrop() //Lista, finns id gå till Crop.AddCrops(). Annars, skapa ny crop
         {
-            Console.WriteLine("crop manager?");
+            Console.WriteLine("Would you like to add *quantity* or a *new* crop?");
+            string choice = Console.ReadLine();
+            if (choice == "quantity")
+            {
+                //välj rätt ID. ID kopplar crop.AddCrops();
+                //crop.AddCrops();
+            }
+            if (choice == "new") 
+            {
+                Console.WriteLine("Enter the Crop Type: ");
+                string inputType = Console.ReadLine();
+                Console.WriteLine("Enter quantity to crop: ");
+                int inputQuantity = int.Parse(Console.ReadLine());
+                Crop newCrop = new Crop(inputType, inputQuantity);
+                cropList.Add(newCrop);
+                Console.Clear();
+                Console.WriteLine($"{newCrop} har been added!\n");
+                ViewCrops();
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice! Going back to menu");
+            }
+            /*Console.WriteLine("Select the ID of the crop you'd like to add amount to: ");
+            ViewCrops();
+            int idToCrop = int.Parse(Console.ReadLine());
             int amountToAdd;
-            
-            if (int.TryParse(Console.ReadLine(), out amountToAdd))
+            if (idToCrop == Crop.Id)
+            {
+                Crop.AddCrops();
+            }
+
+            else
+            {
+                Console.WriteLine("This Crop ID doesn't exist. Creating new one");
+
+            }*/
+
+            /*if (int.TryParse(Console.ReadLine(), out amountToAdd))
             {
                 for (int i = 0; i < amountToAdd; i++)
                 {
@@ -98,13 +130,12 @@ namespace Farmen
                     //cropList.Add(newcrop);
                     //Console.WriteLine($"{cropQuantity} {cropName} added!\n");
                 }
-                Crop.AddCrops();
-                AddCrop();
+                Crop.AddCrops(amountToAdd);
             }
             else
             {
                 Console.WriteLine("Invalid input for the number of animals. Please enter a valid number.");
-            }
+            }*/
         }
 
 
@@ -163,13 +194,14 @@ namespace Farmen
 
 
         // Till Niklas:
-        // Ska detta med?
+        // Ska detta med? JA, 
 
-        //public Crop[] GetCrops()
-        //{
-        //    Crop[] cropList = new Crop[0];
-        //    return cropList;
-        //
-        //}
+        public Crop[] GetCrops()
+        {
+            Crop[] = new Crop[cropList.Count];
+            //Crop[] crops = new Crop[] { /* Populate with Crop objects */ };
+            return Crop[];
+
+        }
     }
 }
