@@ -15,10 +15,6 @@ namespace Farmen
         public void Run()
         {
             bool showMenu = true;
-            
-
-
-
             while (showMenu)
             {
                 DisplayMenu();
@@ -26,16 +22,21 @@ namespace Farmen
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         animalManager.Run();
                         break;
                     case "2":
+                        Console.Clear();
                         cropManager.CropmanagerMenu();
-                        break; 
+                        break;
                     case "3":
+                        Console.Clear();
                         break;
                     case "4":   
+                        Console.Clear();
                         break;
                     case "9":
+                        Console.Clear();
                         showMenu = false;
                          break;
                     default:

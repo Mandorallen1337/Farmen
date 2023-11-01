@@ -8,42 +8,38 @@ namespace Farmen
 {
     public class Crop : Entity
     {
-        
+        private string CropType {  get; set; }
 
-        public string CropType {  get; set; }
-
-        public int Quantity { get; set; } 
-
-        public int CropID { get; set; }
+        private int Quantity { get; set; } 
         //va private?
 
         private static int nextCropID = 1;
 
-        public Crop(string cropType, int quantity, int cropID) : base(cropType, quantity)
+
+        public Crop(string cropType, int quantity) : base(cropType, nextCropID)
         {
             CropType = cropType;
             Quantity = quantity;
-            CropID = cropID;
+            nextCropID++;
         }
-
-
-
 
 
 
         public override string GetDescription()
         {
-            return $"This is croptype: {Name} and the Quantity is: {Quantity} and has number: {CropID}";
+            return $"Crop type: {Name}, remaining amount: {Quantity} ID: {Id}";
             //return $"Quantity is: {Quantity}";
         }
 
 
-        public int AddCrop(int quantity)
+    
+        public int AddCrops(int quantity)
         {
-            Console.WriteLine("Enter the amount of weet to add:");
+            Console.WriteLine("crop");
             string input = Console.ReadLine();
 
             // Try to parse the input as an integer
+
             if (int.TryParse(input, out int addedQuantity))
             {
                 quantity += addedQuantity;
@@ -55,12 +51,14 @@ namespace Farmen
 
             return quantity;
         }
+       
+
 
 
 
         public bool TakeCrop(int amoutToRemove)
         {
-            Console.WriteLine("How much weet do you want to remove?");
+            Console.WriteLine("How much Wheat do you want to remove?");
             int amountToRemove = Convert.ToInt32(Console.ReadLine());
             if (Quantity < amoutToRemove)
             {

@@ -14,19 +14,15 @@ namespace Farmen
 
         public List<Animal> animalList = new List<Animal>();
 
+
         public AnimalManager()
         {
-
-            animalList.Add(new Animal("Kajsa", 1, "Cow"));
-            animalList.Add(new Animal("Lisa", 2, "Cow"));
-            animalList.Add(new Animal("Maja", 3, "Cow"));
-            animalList.Add(new Animal("Rosa", 4, "Cow"));
-            animalList.Add(new Animal("Jenny", 5, "Cow"));
-
-
-
+            animalList.Add(new Animal("Kajsa", "Cow"));
+            animalList.Add(new Animal("Lisa", "Cow"));
+            animalList.Add(new Animal("Maja", "Cow"));
+            animalList.Add(new Animal("Rosa", "Cow"));
+            animalList.Add(new Animal("Jenny", "Cow"));
         }
-
 
 
         public AnimalManager(List<AnimalManager> cropList, List<Animal> animalList)
@@ -35,10 +31,11 @@ namespace Farmen
             this.animalList = animalList;
         }
 
+
+
         public void Run()
         {
             bool showMenu = true;
-
 
             while (showMenu)
             {
@@ -47,18 +44,23 @@ namespace Farmen
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         AddAnimals();
                         break;
                     case "2":
+                        Console.Clear();
                         RemoveAnimal();
                         break;
                     case "3":
+                        Console.Clear();
                         ViewAnimals();
                         break;
                     case "4":
+                        Console.Clear();
                         FeedAnimals();
                         break;
                     case "9":
+                        Console.Clear();
                         showMenu = false;
                         break;
                     default:
@@ -72,7 +74,7 @@ namespace Farmen
                 Console.WriteLine("1. Add animal.");
                 Console.WriteLine("2. Remove animal.");
                 Console.WriteLine("3. View animals.");
-                Console.WriteLine("9. Quit");
+                Console.WriteLine("9. Go back to main menu");
                 Console.Write("Enter your choice: ");
             }
         }
@@ -80,17 +82,20 @@ namespace Farmen
         private void FeedAnimals()
         {
             //skicka med crop. Vilket djur och om det är rätt crop.
+
+            // Till Niklas:
+            //Ska vi ha med detta i och med att vi inte gör alla klasser från diagrammet?
         }
 
         private void ViewAnimals()
         {
-            //Använda GetDescriptions.
+            Console.WriteLine("Current animals owned:");
             foreach (Animal animals in animalList)
             {
                 Console.WriteLine(animals.GetDescription());
-                //Console.WriteLine(animals.Name + " " + animals.Id + " " + animals.Species + ". ");
 
             }
+            Console.WriteLine("\n");
         }
 
         private void RemoveAnimal()
@@ -104,7 +109,8 @@ namespace Farmen
             if (animalToRemove != null)
             {
                 animalList.Remove(animalToRemove);
-                Console.WriteLine($"Animal with ID {input} has been removed.");
+                ViewAnimals(); //för att visa uppdaterad lista efter man tagit bort asdasdasd
+                Console.WriteLine($"Animal with ID {input} has been removed.\n");
             }
             else
             {
@@ -114,38 +120,33 @@ namespace Farmen
 
         private void AddAnimals()
         {
-            bool addComplete = false;
-            Console.WriteLine("How many animals do you want to add?");
-            while (!addComplete)
+            int amountToAdd;
+
+            do
             {
-                int amountToAdd;
-                if (int.TryParse(Console.ReadLine(), out amountToAdd))
-                {
-                    for (int i = 0; i < amountToAdd; i++)
-                    {
-                        Console.WriteLine("Enter Animal name: ");
-                        string inputName = Console.ReadLine();
-
-                        Console.WriteLine("Enter Animal ID: ");
-                        int inputId = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Enter Animal species: ");
-                        string inputSpecies = Console.ReadLine();
-
-
-                        Animal newanimal = new Animal(inputName, inputId, inputSpecies);
-
-                        animalList.Add(newanimal);
-
-                        addComplete = true;
-                    }
-                }
-                else
+                Console.WriteLine("How many animals do you want to add?");
+                if (!int.TryParse(Console.ReadLine(), out amountToAdd))
                 {
                     Console.WriteLine("Invalid input for the number of animals. Please enter a valid number.");
                 }
+            } while (amountToAdd <= 0);
+
+            for (int i = 0; i < amountToAdd; i++)
+            {
+                Console.WriteLine("Enter Animal name: ");
+                string inputName = Console.ReadLine();
+
+                Console.WriteLine("Enter Animal species: ");
+                string inputSpecies = Console.ReadLine();
+
+                Animal newAnimal = new Animal(inputName, inputSpecies);
+                animalList.Add(newAnimal);
+                Console.Clear();
+                Console.WriteLine($"{newAnimal} har been added!\n");
+                ViewAnimals();
             }
         }
+
     }
 }
         
