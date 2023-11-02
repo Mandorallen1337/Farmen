@@ -35,9 +35,8 @@ namespace Farmen
 
 
     
-        public int AddCrops(int uantity) //Om crop existerar och bara ska ha quantity
+        public int AddCrops()
         {
-            // Try to parse the input as an integer
             Console.WriteLine("Enter the amount you'd like to add: ");
             int addQuantity = int.Parse(Console.ReadLine());
             Quantity += addQuantity;

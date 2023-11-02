@@ -11,7 +11,7 @@ namespace Farmen
         
         public string Name { get; set; }
         public int Id { get; set; }
-        //stod som protected men då kan vi inte använda name i animalManager? lös med getdes
+        
 
         public Entity(string name, int id)
         {

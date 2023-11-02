@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -80,14 +81,19 @@ namespace Farmen
 
 
         
-        private void AddCrop() //Lista, finns id gå till Crop.AddCrops(). Annars, skapa ny crop
+        private void AddCrop()
         {
             Console.WriteLine("Would you like to add *quantity* or a *new* crop?");
             string choice = Console.ReadLine();
             if (choice == "quantity")
             {
-                //välj rätt ID. ID kopplar crop.AddCrops();
-                //crop.AddCrops();
+                ViewCrops();
+                Console.WriteLine("Please enter ID of the crop you want to add more of: ");
+                int pickID = int.Parse(Console.ReadLine());
+                if (pickID == Crop.Id)
+                {
+                    Crop.AddCrops();
+                }
             }
             if (choice == "new") 
             {
@@ -198,9 +204,12 @@ namespace Farmen
 
         public Crop[] GetCrops()
         {
-            Crop[] = new Crop[cropList.Count];
-            //Crop[] crops = new Crop[] { /* Populate with Crop objects */ };
-            return Crop[];
+            Crop[] crops = cropList.ToArray();
+            return crops; //Funkar inte. blir systemerror.. försökt med GPT men får det inte att fungera.
+            //Crop[] crops = GetCrops();
+            //Crop[] = new Crop[cropList.Count];
+            //Crop[] crops = new Crop[] { /* Populate with Crop objects / };
+            // Call the GetCrops method to get the Crop[] array
 
         }
     }
