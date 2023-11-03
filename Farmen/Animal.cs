@@ -14,7 +14,6 @@ namespace Farmen
         public string Species { get; set; } = "";
         private List<string> AcceptableCropTypes { get; set; }
 
-
         private static int nextAnimalID = 1;
 
 
@@ -23,8 +22,6 @@ namespace Farmen
             this.Species = species;
             nextAnimalID++; // Increment the static ID for the next animal.
         }
-
-
 
 
         public void Feed(List<string> AcceptableCropTypes) //Ha med cropList

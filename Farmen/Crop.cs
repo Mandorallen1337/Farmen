@@ -10,7 +10,7 @@ namespace Farmen
     {
         CropManager CropManager {  get; set; }
 
-        private string CropType {  get; set; }
+        public string CropType {  get; set; }
 
         private int Quantity { get; set; } 
         //va private?

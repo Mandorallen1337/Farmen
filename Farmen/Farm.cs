@@ -23,7 +23,7 @@ namespace Farmen
                 {
                     case "1":
                         Console.Clear();
-                        animalManager.Run();
+                        animalManager.Run(cropManager.GetCropList());
                         break;
                     case "2":
                         Console.Clear();
@@ -49,7 +49,7 @@ namespace Farmen
                 Console.WriteLine("Main Menu:");
                 Console.WriteLine("1. Animal Manager Menu.");
                 Console.WriteLine("2. Crop Manager Menu.");
-                Console.WriteLine("3. Option 3");
+                Console.WriteLine("3. Option ");
                 Console.WriteLine("9. Quit");
                 Console.Write("Enter your choice: ");
             }

@@ -22,6 +22,7 @@ namespace Farmen
             animalList.Add(new Animal("Maja", "Cow"));
             animalList.Add(new Animal("Rosa", "Cow"));
             animalList.Add(new Animal("Jenny", "Cow"));
+
         }
 
 
@@ -33,7 +34,8 @@ namespace Farmen
 
 
 
-        public void Run()
+        public void Run(List<Crop> crops)
+
         {
             bool showMenu = true;
 
@@ -74,17 +76,26 @@ namespace Farmen
                 Console.WriteLine("1. Add animal.");
                 Console.WriteLine("2. Remove animal.");
                 Console.WriteLine("3. View animals.");
+                Console.WriteLine("4. Feed animals");
                 Console.WriteLine("9. Go back to main menu");
                 Console.Write("Enter your choice: ");
             }
         }
 
+
+        //skicka med crop. Vilket djur och om det är rätt crop.
+        //anledning för croplist/manager
+        // Till Niklas: 1. Vilken animal? 2. vilken crop ska animal ha?, 3. om acceptableCropTypes stämmer = namnamnam 4. 
+        //Ska vi ha med detta i och med att vi inte gör alla klasser från diagrammet?
+
         private void FeedAnimals()
         {
-            //skicka med crop. Vilket djur och om det är rätt crop.
-            //anledning för croplist/manager
-            // Till Niklas: 1. Vilken animal? 2. vilken crop ska animal ha?, 3. om acceptableCropTypes stämmer = namnamnam 4. 
-            //Ska vi ha med detta i och med att vi inte gör alla klasser från diagrammet?
+            Console.WriteLine("Ah so you want to feed the animals, how brave!");
+            ViewAnimals();
+            Console.WriteLine("Which animal would you like to feed?\nEnter animal ID");
+            string animalToFeed = Console.ReadLine();
+            Console.WriteLine("Which crops to feed with?");
+            
         }
 
         private void ViewAnimals()
@@ -93,7 +104,6 @@ namespace Farmen
             foreach (Animal animals in animalList)
             {
                 Console.WriteLine(animals.GetDescription());
-
             }
             Console.WriteLine("\n");
         }
