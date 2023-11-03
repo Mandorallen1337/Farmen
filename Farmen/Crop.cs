@@ -8,7 +8,7 @@ namespace Farmen
 {
     public class Crop : Entity
     {
-        CropManager CropManager {  get; set; }
+        
 
         public string CropType {  get; set; }
 

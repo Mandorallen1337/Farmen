@@ -8,15 +8,20 @@ namespace Farmen
 {
     public class Animal : Entity
     {
-        Crop Crop { get; set; } 
+         
         CropManager CropManager { get; set; }
 
         public string Species { get; set; } = "";
-        private List<string> AcceptableCropTypes { get; set; }
+        private List<string> AcceptableCropTypes = new List<string>();
 
         private static int nextAnimalID = 1;
 
-
+        public void AccetableCropType(List<string> acceptebleCropTypes)
+        {
+            acceptebleCropTypes.Add("grass");
+            
+           
+        }
         public Animal(string name, string species) : base(name, nextAnimalID)
         {
             this.Species = species;
@@ -24,13 +29,11 @@ namespace Farmen
         }
 
 
-        public void Feed(List<string> AcceptableCropTypes) //Ha med cropList
+        public void Feed(CropManager cropList) //Ha med cropList
         {
             Console.WriteLine("What crop do you want to Feed with?");
-            foreach( var item in AcceptableCropTypes)
-            {
-                Console.WriteLine(item);
-            }
+            CropManager.GetCropList();
+            
         }
        
 

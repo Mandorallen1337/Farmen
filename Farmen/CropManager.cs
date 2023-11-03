@@ -19,7 +19,10 @@ namespace Farmen
             cropList.Add(new Crop("Hay", 200));
         }
 
-        public List<Crop> GetCropList() {  return cropList; }
+        public List<Crop> GetCropList() 
+        {  
+            return cropList; 
+        }
     
         public void CropmanagerMenu()
         {

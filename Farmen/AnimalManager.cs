@@ -13,7 +13,7 @@ namespace Farmen
         public List<AnimalManager> CropList = new List<AnimalManager>();
 
         public List<Animal> animalList = new List<Animal>();
-
+        CropManager manager { get; set; }
 
         public AnimalManager()
         {
@@ -34,7 +34,7 @@ namespace Farmen
 
 
 
-        public void Run(List<Crop> crops)
+        public void Run(List<Crop> cropList)
 
         {
             bool showMenu = true;
@@ -59,7 +59,7 @@ namespace Farmen
                         break;
                     case "4":
                         Console.Clear();
-                        FeedAnimals();
+                        FeedAnimals(cropList);
                         break;
                     case "9":
                         Console.Clear();
@@ -82,21 +82,61 @@ namespace Farmen
             }
         }
 
+        private void FeedAnimals(List<Crop> cropList)
+        {
+            
+            Console.WriteLine("Ah so you want to feed the animals, how brave!");
+            ViewAnimals();
+            Console.WriteLine("Which animal would you like to feed?\nEnter animal ID");
+            string animalToFeed = Console.ReadLine();
+            foreach (Crop crop in cropList)
+            {
+                Console.WriteLine(crop.CropType);
+            }
+            Console.WriteLine("What type of crop?");
+            string input = Console.ReadLine();
+            string lowerCaseInput = input.ToLower();
+            
+            if (lowerCaseInput == "grass")
+            {
+                Console.WriteLine($"The animal eats grass");
+                
+                                
+            }
+            else if (lowerCaseInput == "hay")
+            {
+                Console.WriteLine("The animal eats Haay.");
+            }
+            else 
+            {
+                Console.WriteLine("Fel input.");
+            }
+
+        }
+
 
         //skicka med crop. Vilket djur och om det är rätt crop.
         //anledning för croplist/manager
         // Till Niklas: 1. Vilken animal? 2. vilken crop ska animal ha?, 3. om acceptableCropTypes stämmer = namnamnam 4. 
         //Ska vi ha med detta i och med att vi inte gör alla klasser från diagrammet?
 
-        private void FeedAnimals()
-        {
-            Console.WriteLine("Ah so you want to feed the animals, how brave!");
-            ViewAnimals();
-            Console.WriteLine("Which animal would you like to feed?\nEnter animal ID");
-            string animalToFeed = Console.ReadLine();
-            Console.WriteLine("Which crops to feed with?");
+        //private void FeedAnimals(string feedToAnimal, Crop cropList)
+        //{
+        //    Console.WriteLine("Ah so you want to feed the animals, how brave!");
+        //    ViewAnimals();
+        //    Console.WriteLine("Which animal would you like to feed?\nEnter animal ID");
+        //    string animalToFeed = Console.ReadLine();
             
-        }
+        //    Console.WriteLine("Which crops to feed with?");
+        //    string cropType = Console.ReadLine();
+        //    if(cropType == "Grass")
+        //    {
+        //        Console.WriteLine($"The animal eats {cropType} ");
+        //    }
+            
+            
+            
+        //}
 
         private void ViewAnimals()
         {
