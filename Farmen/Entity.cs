@@ -8,7 +8,6 @@ namespace Farmen
 {
     public abstract class Entity
     {
-        
         public string Name { get; set; }
         public int Id { get; set; }
         
@@ -20,6 +19,5 @@ namespace Farmen
         }
 
         public abstract string GetDescription();
-        
     }
 }

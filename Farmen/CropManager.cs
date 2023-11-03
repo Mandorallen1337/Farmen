@@ -19,6 +19,7 @@ namespace Farmen
             cropList.Add(new Crop("Hay", 200));
         }
 
+
         public List<Crop> GetCropList() 
         {  
             return cropList; 
@@ -77,7 +78,6 @@ namespace Farmen
         }
 
 
-
         private void AddCrop()
         {
             Console.WriteLine("Would you like to add quantity or a new crop?");
@@ -91,7 +91,7 @@ namespace Farmen
                 foreach (Crop crop in cropList)
                 {
                     if (pickID == crop.Id)
-                    {   // console writeline crop quantity added
+                    {   
                         crop.AddCrops();
                         cropFound = true;
                     }
@@ -120,14 +120,13 @@ namespace Farmen
         }
 
 
-
-        private void RemoveCrop() //removes crop completely
+        private void RemoveCrop()
         {
             ViewCrops();
             Console.WriteLine("Enter the ID of the crop you want to remove!");
             int input = Convert.ToInt32(Console.ReadLine());
 
-            Crop cropToRemove = cropList.FirstOrDefault(crop => crop.Id == input); //Johnnys magiska fingrar
+            Crop cropToRemove = cropList.FirstOrDefault(crop => crop.Id == input);
 
             if (cropToRemove != null)
             {
@@ -139,6 +138,5 @@ namespace Farmen
                 Console.WriteLine("No crop found with ID " + input);
             }
         }
-
     }
 }

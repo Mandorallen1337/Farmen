@@ -8,12 +8,8 @@ namespace Farmen
 {
     public class Crop : Entity
     {
-        
-
         public string CropType {  get; set; }
-
         private int Quantity { get; set; } 
-        //va private?
 
         private static int nextCropID = 1;
 
@@ -26,40 +22,32 @@ namespace Farmen
         }
 
 
-
         public override string GetDescription()
         {
             return $"Crop type: {Name}, remaining amount: {Quantity} ID: {Id}";
-            //return $"Quantity is: {Quantity}";
         }
 
 
-    
         public int AddCrops()
         {
             Console.WriteLine("Enter the amount you'd like to add: ");
             int addQuantity = int.Parse(Console.ReadLine());
             Quantity += addQuantity;
+            Console.WriteLine($"New quantity is {Quantity}");
             return Quantity;
         }
-       
-
-
 
 
         public bool TakeCrop(int amoutToRemove)
         {
-            Console.WriteLine("How much Wheat do you want to remove?");
-            int amountToRemove = Convert.ToInt32(Console.ReadLine());
             if (Quantity < amoutToRemove)
             {
-                Console.WriteLine("Can not remove more than we have! ");
                 return false;
             }
             else
             {
                 Quantity -= amoutToRemove;
-                Console.WriteLine("New quantity is :",Quantity);
+                Console.WriteLine($"New quantity is: {Quantity}");
                 return true;
             }
         }
